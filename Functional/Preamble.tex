@@ -1,6 +1,6 @@
 %%% Stop the section counter from resetting when a new chapter is declared %%%
 \makeatletter
-  \@removefromreset{section}{chapter}
+  %\@removefromreset{section}{chapter}
 \makeatother
 
 \definecolor{myred}{rgb}{0.8, 0, 0} % Custom red colour
@@ -9,8 +9,8 @@
 
 \renewcommand\contentsname{} % remove the "Chapter #" thing
 
-\renewcommand{\thechapter}{\arabic{chapter}.} % Change the dot point for chapters in Table of contents
-\renewcommand{\thesection}{\arabic{section})} % Change the dot point for sections in table of contents 
+\renewcommand{\thechapter}{\Roman{chapter}} % Change the dot point for chapters in Table of contents
+\renewcommand{\thesection}{\arabic{section}} % Change the dot point for sections in table of contents 
 
 \onehalfspacing % increase the spacing between the lines to something more readable / typical of a legal document
 
@@ -34,9 +34,11 @@
 }
 
 %%% Modify how indented each level of dot point is %%%
-\setlist[enumerate, 1]{leftmargin=2cm, label=(\arabic*)}
-\setlist[enumerate, 2]{leftmargin=1cm, label=\arabic*)}
-\setlist[enumerate, 3]{leftmargin=1cm, label=\arabic*)}
+\setlist[enumerate, 1]{leftmargin=2cm, label={\thesection.\arabic*}}
+\setlist[enumerate, 2]{leftmargin=1cm, label*=.\arabic*}
+\setlist[enumerate, 3]{leftmargin=1cm, label*=.\arabic*}
+\setlist[enumerate, 4]{leftmargin=1cm, label*=.\arabic*}
+\setlist[enumerate, 5]{leftmargin=1cm, label*=.\arabic*}
 %\setlist[enumerate, 2]{leftmargin=1cm, label=\alph*)}
 %setlist[enumerate, 3]{leftmargin=1cm, label=\roman*)}
 
@@ -72,3 +74,28 @@
   \chaptermark{#1}
   \addcontentsline{toc}{chapter}{\protect\numberline{\thechapter}#1}
 }
+
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=red,
+    linktoc=all
+}
+
+\newcommand\BackgroundPic{%
+\put(0,0){%
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight,%
+keepaspectratio]{Functional/tl.jpg}%
+\vfill
+}}}
+
+
+
+
+
+
+
